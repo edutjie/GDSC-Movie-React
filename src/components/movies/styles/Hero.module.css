@@ -1,0 +1,34 @@
+.hero {
+  /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(0, 0, 0)),
+      url("../images/thor-ragnarok.jpg"); */
+  background-repeat: repeat;
+  background-size: fit;
+  height: 100vh;
+  cursor: pointer;
+  /* display: none; */
+  margin-bottom: 200px;
+  margin: 0 -5.55%;
+}
+
+.herotitle {
+  padding: 412px 120px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+.hero p {
+  max-width: 763px;
+}
+
+.herotitle button {
+  background: #ef3b3b;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 30px;
+  border-radius: 500px;
+  font-size: bold;
+  border: none;
+  cursor: pointer;
+}
