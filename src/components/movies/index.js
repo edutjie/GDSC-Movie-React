@@ -4,25 +4,17 @@ import Movie from "./Movie";
 import classes from "./styles/Movies.module.css";
 import { useHorizontalScroll } from "./hooks/useHorizontalScroll";
 
-const Movies = ({ data, addWatchList }) => {
-  const [title, setTitle] = useState("");
-  const [releaseDate, setReleaseDate] = useState("");
-  const [voteAverage, setVoteAverage] = useState("");
-  const [overview, setOverview] = useState("");
+const Movies = ({ data, addFavoriteMovie }) => {
+  const [movie, setMovie] = useState({});
   const [posterPath, setPosterPath] = useState("");
   const [display, setDisplay] = useState("none");
-  const [movie, setMovie] = useState({});
   return (
     <>
       <Hero
-        title={title}
-        releaseDate={releaseDate}
-        voteAverage={voteAverage}
-        overview={overview}
+        movie={movie}
         posterPath={posterPath}
         display={display}
-        addWatchList={addWatchList}
-        movie={movie}
+        addFavoriteMovie={addFavoriteMovie}
       />
       <div className={classes.trending} id="trending">
         <h1>Trending</h1>
@@ -40,10 +32,6 @@ const Movies = ({ data, addWatchList }) => {
                   key={movie.id}
                   {...movie}
                   movie={movie}
-                  setTitle={setTitle}
-                  setReleaseDate={setReleaseDate}
-                  setVoteAverage={setVoteAverage}
-                  setOverview={setOverview}
                   setPosterPath={setPosterPath}
                   setDisplay={setDisplay}
                   setMovie={setMovie}
@@ -59,10 +47,8 @@ const Movies = ({ data, addWatchList }) => {
               <Movie
                 key={movie.id}
                 {...movie}
-                setTitle={setTitle}
-                setReleaseDate={setReleaseDate}
-                setVoteAverage={setVoteAverage}
-                setOverview={setOverview}
+                movie={movie}
+                setMovie={setMovie}
                 setPosterPath={setPosterPath}
                 setDisplay={setDisplay}
               />

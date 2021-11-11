@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./styles/MainNavigation.module.css";
 import { Link } from "react-router-dom";
+import FavouritesContext from "../store/favourites-context";
 
 const MainNavigation = (props) => {
+  const favouriteCtx = useContext(FavouritesContext);
   return (
     <div className={classes.navbar}>
       <a href="javascript:window.location.reload(true)">
@@ -21,7 +23,12 @@ const MainNavigation = (props) => {
           <a href="#movies">Movies</a>
         </li>
         <li>
-          <Link to="/watch-list">Watch List</Link>
+          <Link to="/watch-list">
+            Watch List{" "}
+            <span className={classes.badge}>
+              {favouriteCtx.totalFavourites}
+            </span>
+          </Link>
         </li>
         <li>
           <form action="submit" id="form" onSubmit={(e) => e.preventDefault()}>

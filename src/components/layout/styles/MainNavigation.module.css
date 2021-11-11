@@ -48,3 +48,11 @@ input:focus {
 ::placeholder {
   color: white;
 }
+
+.badge {
+  background-color: #ef3b3b;
+  color: white;
+  border-radius: 500px;
+  padding: 5px 12px;
+  margin-left: 0.5rem;
+}

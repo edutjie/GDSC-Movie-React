@@ -1,18 +1,26 @@
 import React from "react";
-import WatchList from "../../pages/watch-list";
 import classes from "./styles/Hero.module.css";
+import { useContext } from "react";
+import FavouritesContext from "../store/favourites-context";
 
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
-const Hero = ({
-  title,
-  releaseDate,
-  voteAverage,
-  overview,
-  posterPath,
-  display,
-  addWatchList,
-  movie,
-}) => {
+const Hero = ({ movie, display, posterPath }) => {
+  const favouriteCtx = useContext(FavouritesContext);
+  const itemIsFavourite = favouriteCtx.itemIsFavourite(movie.id);
+  const toggleFavouriteStatusHandler = () => {
+    if (itemIsFavourite) {
+      favouriteCtx.removeFavourite(movie.id);
+    } else {
+      favouriteCtx.addFavourite({
+        id: movie.id,
+        title: movie.title,
+        poster_path: posterPath,
+        release_date: movie.release_date,
+        vote_average: movie.vote_average,
+        overview: movie.overview,
+      });
+    }
+  };
   return (
     <div
       className={classes.hero}
@@ -27,12 +35,14 @@ const Hero = ({
       }}
     >
       <div className={classes.herotitle} id="hero-title">
-        <h1>{title}</h1>
-        <p>Release Date: {releaseDate}</p>
-        <p>⭐ Rating: {voteAverage} / 10</p>
+        <h1>{movie.title}</h1>
+        <p>Release Date: {movie.release_date}</p>
+        <p>⭐ Rating: {movie.vote_average} / 10</p>
         <br />
-        <p>{overview}</p>
-        <button onClick={() => addWatchList(movie)}>Add to Watch List</button>
+        <p>{movie.overview}</p>
+        <button onClick={toggleFavouriteStatusHandler}>
+          {itemIsFavourite ? 'Remove from Watch List' : 'Add to Watch List'}
+        </button>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ const API_URL =
   "/discover/movie?sort_by=popularity.desc&" +
   API_KEY +
   "&sort_by=popularity.desc";
-const IMG_URL = "https://image.tmdb.org/t/p/w500";
+// const IMG_URL = "https://image.tmdb.org/t/p/w500";
 const SEARCH_URL = BASE_URL + "/search/movie?" + API_KEY + "&query=";
 
 export const getMovieRequest = async (searchValue, setMovies) => {
@@ -15,8 +15,6 @@ export const getMovieRequest = async (searchValue, setMovies) => {
   const url = SEARCH_URL + searchValue;
   const response = await fetch(url);
   const responseJson = await response.json();
-  // test
-  console.log(responseJson);
 
   if (searchValue) {
     if (responseJson.results) {

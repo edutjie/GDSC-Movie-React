@@ -1,16 +1,21 @@
-import React from "react";
-import Movie from "../../components/movies/Movie";
+import React, { useContext } from "react";
 import classes from "./styles/WatchList.module.css";
+import FavouritesContext from "../../components/store/favourites-context";
+import Favorites from "./Favorites";
 
-const WatchList = ({ watchList }) => {
+const WatchList = () => {
+  const favouriteCtx = useContext(FavouritesContext);
+  let content;
+  if (favouriteCtx.totalFavourites === 0) {
+    content = <p>You got no Watch List. Start adding some?</p>;
+  } else {
+    content = <Favorites data={favouriteCtx.favourites} />;
+  }
   return (
     <>
       <div className={classes.movies} id="movies">
-        <h1>Movies</h1>
-        <div className={classes.moviesitem}>
-          {watchList.length > 0 &&
-            watchList.map((movie) => <Movie key={movie.id} {...movie} />)}
-        </div>
+        <h1>Watch List</h1>
+        {content}
       </div>
     </>
   );
