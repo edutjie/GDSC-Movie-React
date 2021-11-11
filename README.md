@@ -7,7 +7,7 @@
 <ul>
   <li>HTML</li>
   <li>CSS</li>
-  <li>Vanilla JS</li>
+  <li>React JS with React Router Dom</li>
   <li>Movie API Fetched from https://developers.themoviedb.org/3</li>
 </ul>
 <h2>Features:</h2>
